@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: zoo-argo-wf-workflow-template
+build: {}
+
+deploy:
+  helm:
+    releases:
+      - name: argo-cwl-runner-stage-in-out
+        chartPath: charts
+        namespace: ns1
+        valuesFiles:
+          - charts/values.yaml
