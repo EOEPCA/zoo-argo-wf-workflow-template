@@ -1,11 +1,23 @@
+# -- Specifies the maximum number of concurrent workflows that can be executed by the workflow template.
 semaphore: 3  
 
+# -- Configuration for the wrapper section, which defines the rules and steps for the workflow.
+# -- If these fields are left empty, default files located in the 'charts/files' directory are used.
 wrapper:
+  # -- Specifies custom rules for the workflow execution. Leave empty to use the default rules.
   rules: {}
+
+  # -- Configuration for the main execution step of the workflow. Leave empty to use the default main step file.
   main: {}
+
+  # -- Configuration for staging input data before the workflow execution starts. If not set, the default 'stageIn' configuration file is used.
   stageIn: {}
+
+  # -- Configuration for staging output data after the workflow execution completes. If not set, the default 'stageOut' configuration file is used.
   stageOut: {}
 
+# -- Specifies the container image for the CWL wrapper. 
 cwlwrapperImage: eoepca/cwl-wrapper@sha256:02f4a84d7cfdb7035cd6d58c1d9fca3f9c5e24bf2a1ea577312297f2c42574bd
 
+# -- Defines the container image used for auxiliary tasks. 
 helperImage: ghcr.io/eoap/mastering-app-package/stage:1.1.0
